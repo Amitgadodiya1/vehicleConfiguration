@@ -66,13 +66,32 @@ docker compose up --build
 
 ---
 
-## 🔐 Required Headers for All API Calls
+## 🔐 Authorization
 
-```http
+This project currently uses an x-api-key header to authorize API requests. This approach was chosen to quickly secure endpoints without implementing full-fledged authentication logic during the initial development phase.
+
+All API calls require the following header:
+```
 x-api-key: b5a1f5d9-7c11-42ee-a8b6-bf3fa14c9d1f
 ```
 
----
+**🔒 Future Scope: Use JWT (JSON Web Token) Authentication**
+
+- To transition this application to production-ready standards, we plan to implement JWT-based authentication. JWT allows:
+
+- Secure login and user identification.
+
+- Short-lived, expirable tokens to enhance protection.
+
+Authorization based on user roles and scopes.
+
+Stateless authentication, suitable for microservices and scaling.
+
+API calls will then use the header:
+```
+Authorization: Bearer <token>
+```
+----
 
 ## 🔌 API Endpoints
 
@@ -280,8 +299,3 @@ docker exec -it <backend_container_id> node seed.js
 - Change ports in `docker-compose.yml` if needed.
 
 ---
-
-## 🧄 License
-
-MIT © 2025
-
