@@ -1,0 +1,17 @@
+
+# Dependency directories
+**/node_modules/
+
+# Build outputs
+**/build/
+**/dist/
+
+# Environment variables
+.env
+
+# IDE/Editor settings
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
