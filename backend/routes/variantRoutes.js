@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const apiKeyAuth = require('../middleware/apiKeyAuth');
+
 const {
   getVariants,
   getVariantById,
@@ -8,10 +10,10 @@ const {
   deleteVariant
 } = require('../controller/variantController');
 
-router.get('/', getVariants);
-router.get('/:id', getVariantById);
-router.post('/', createVariant);
-router.put('/:id', updateVariant);
-router.delete('/:id', deleteVariant);
+router.get('/',apiKeyAuth, getVariants);
+router.get('/:id',apiKeyAuth, getVariantById);
+router.post('/',apiKeyAuth, createVariant);
+router.put('/:id', apiKeyAuth,updateVariant);
+router.delete('/:id',apiKeyAuth, deleteVariant);
 
 module.exports = router;

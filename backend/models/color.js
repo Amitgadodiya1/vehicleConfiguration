@@ -1,4 +1,3 @@
-// models/Color.js
 const mongoose = require('mongoose');
 
 const colorSchema = new mongoose.Schema({

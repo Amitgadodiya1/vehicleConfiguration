@@ -1,4 +1,3 @@
-// models/Feature.js
 const mongoose = require('mongoose');
 
 const featureSchema = new mongoose.Schema({

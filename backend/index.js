@@ -1,4 +1,3 @@
-// backend/app.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -17,15 +16,12 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 
-// Connect DB
 mongoose.connect(MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
-// Sample route
 app.get('/', (req, res) => res.send('API is working'));
 
-// Routes
 app.use('/api/models', modelRoutes);
 app.use('/api/variants', variantRoutes);
 app.use('/api/colors', colorRoutes);

@@ -1,6 +1,5 @@
 const Variant = require('../models/varient');
 
-// GET all variants with populated references
 exports.getVariants = async (req, res) => {
   try {
     const variants = await Variant.find().populate(['colors', 'accessories', 'features']);
@@ -10,7 +9,6 @@ exports.getVariants = async (req, res) => {
   }
 };
 
-// GET a specific variant by ID
 exports.getVariantById = async (req, res) => {
   try {
     const variant = await Variant.findById(req.params.id).populate(['colors', 'accessories', 'features']);
@@ -21,7 +19,6 @@ exports.getVariantById = async (req, res) => {
   }
 };
 
-// CREATE a new variant
 exports.createVariant = async (req, res) => {
   try {
     const newVariant = await Variant.create(req.body);
@@ -31,7 +28,6 @@ exports.createVariant = async (req, res) => {
   }
 };
 
-// UPDATE an existing variant
 exports.updateVariant = async (req, res) => {
   try {
     const updated = await Variant.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -42,7 +38,6 @@ exports.updateVariant = async (req, res) => {
   }
 };
 
-// DELETE a variant
 exports.deleteVariant = async (req, res) => {
   try {
     const deleted = await Variant.findByIdAndDelete(req.params.id);

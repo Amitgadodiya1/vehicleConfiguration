@@ -1,5 +1,5 @@
 const Model = require('../models/model');
-require('../models/varient'); // Ensures 'Variant' is registered
+require('../models/varient');
 
 exports.getModels = async (req, res) => {
   try {

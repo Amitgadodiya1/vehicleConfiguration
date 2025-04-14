@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const apiKeyAuth = require('../middleware/apiKeyAuth');
+
 const {
   getColors,
   getColorById,
@@ -8,10 +10,10 @@ const {
   deleteColor
 } = require('../controller/colorController');
 
-router.get('/', getColors);
-router.get('/:id', getColorById);
-router.post('/', createColor);
-router.put('/:id', updateColor);
-router.delete('/:id', deleteColor);
+router.get('/', apiKeyAuth, getColors);
+router.get('/:id', apiKeyAuth, getColorById);
+router.post('/', apiKeyAuth, createColor);
+router.put('/:id', apiKeyAuth, updateColor);
+router.delete('/:id', apiKeyAuth, deleteColor);
 
 module.exports = router;

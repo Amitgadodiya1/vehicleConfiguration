@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const apiKeyAuth = require('../middleware/apiKeyAuth');
+
 const {
   getAccessories,
   getAccessoryById,
@@ -8,10 +10,10 @@ const {
   deleteAccessory
 } = require('../controller/accessoryController');
 
-router.get('/', getAccessories);
-router.get('/:id', getAccessoryById);
-router.post('/', createAccessory);
-router.put('/:id', updateAccessory);
-router.delete('/:id', deleteAccessory);
+router.get('/',apiKeyAuth, getAccessories);
+router.get('/:id',apiKeyAuth, getAccessoryById);
+router.post('/',apiKeyAuth, createAccessory);
+router.put('/:id',apiKeyAuth, updateAccessory);
+router.delete('/:id',apiKeyAuth, deleteAccessory);
 
 module.exports = router;
