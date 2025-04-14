@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: vehicle_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile.backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    env_file:
+      - backend/.env
+    command: >
+      sh -c "
+        echo '⏳ Waiting for Mongo...' &&
+        until nc -z mongo 27017; do sleep 1; done &&
+        echo '✅ Mongo is up!' &&
+        node seed.js &&
+        node index.js
+      "
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
