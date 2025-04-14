@@ -56,7 +56,6 @@ const Home = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Search Bar */}
         <div className="relative max-w-4xl mx-auto mb-10">
           <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-300" />
           <input
@@ -68,12 +67,10 @@ const Home = () => {
           />
         </div>
 
-        {/* Heading */}
         <h1 className="text-4xl font-extrabold text-center mb-8 tracking-tight text-gray-800 dark:text-white">
           Explore Our Luxury Vehicle Models
         </h1>
 
-        {/* Model Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredModels.length > 0 ? (
             filteredModels.map((model) => (
